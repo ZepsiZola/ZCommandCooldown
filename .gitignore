@@ -42,5 +42,6 @@ Desktop.ini
 logs/
 *.log
 
-# Minecraft server test environment
-server/
+# Specifically my stuff
+deploy.sh
+
