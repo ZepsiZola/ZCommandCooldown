@@ -1,0 +1,38 @@
+# ZCommandCooldown Messages Configuration
+# This file uses MiniMessage format for text formatting
+# Learn more: https://docs.advntr.dev/minimessage/format.html
+
+prefix: "<dark_gray>[<gradient:gold:yellow>ZCC</gradient><dark_gray>]</dark_gray> "
+
+# Command cooldown messages
+cooldown:
+  message: "<prefix><red>You must wait <time> before using this command again.</red>"
+  action-bar: "<red>Cooldown: <time> remaining</red>"
+
+# Admin command messages
+admin:
+  reload:
+    success: "<prefix><green>Configuration reloaded successfully!</green>"
+    error: "<prefix><red>Error reloading configuration. Check console for details.</red>"
+  clear:
+    success: "<prefix><green>Cooldowns cleared for <player>!</green>"
+    all-success: "<prefix><green>Cooldowns cleared for all players!</green>"
+    error: "<prefix><red>Error clearing cooldowns. Check console for details.</red>"
+    player-not-found: "<prefix><red>Player not found: <player></red>"
+  debug:
+    enabled: "<prefix><green>Debug mode enabled!</green>"
+    disabled: "<prefix><green>Debug mode disabled!</green>"
+  help:
+    header: "<prefix><yellow>ZCommandCooldown Commands:</yellow>"
+    reload: "<yellow>/zcc reload</yellow> <gray>- Reload the plugin configuration</gray>"
+    clear: "<yellow>/zcc clear <player></yellow> <gray>- Clear cooldowns for a player</gray>"
+    clear-all: "<yellow>/zcc clear all</yellow> <gray>- Clear cooldowns for all players</gray>"
+    debug: "<yellow>/zcc debug</yellow> <gray>- Toggle debug mode</gray>"
+    help: "<yellow>/zcc help</yellow> <gray>- Show this help message</gray>"
+
+# Error messages
+error:
+  no-permission: "<prefix><red>You don't have permission to use this command.</red>"
+  player-only: "<prefix><red>This command can only be used by players.</red>"
+  unknown-command: "<prefix><red>Unknown command. Use /zcc help for a list of commands.</red>"
+  invalid-args: "<prefix><red>Invalid arguments. Use /zcc help for usage information.</red>"

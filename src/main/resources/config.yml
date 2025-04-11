@@ -1,0 +1,12 @@
+# ZCommandCooldown Configuration
+
+# Whether to use the action bar for cooldown messages
+# If true, cooldown messages will be shown in the action bar
+# If false, cooldown messages will be sent as chat messages
+use-action-bar: true
+
+# Whether to clear cooldowns when a player logs out
+# If true, all cooldowns for a player will be cleared when they log out
+# If false, cooldowns will persist across logouts
+clear-on-logout: false
+

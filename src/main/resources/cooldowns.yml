@@ -1,0 +1,37 @@
+# ZCommandCooldown - Command Cooldowns Configuration
+
+# IMPORTANT NOTES:
+# - You can use ANY permission string, not just group permissions
+# - If a player has multiple permissions, the LOWEST cooldown will be used
+# - The "default" key will be used if no permissions match
+# - If no "default" is specified, the highest cooldown will be used as default
+
+cooldowns:
+
+  repair: # Command that a cooldown will be applied to.
+    aliases: # Other aliases for the command. All share the same cooldown.
+    - fix
+    - erepair
+    durations:
+      default: 600             # 600 seconds for players by default
+      group.group1: 120        # 2 minutes for players with group.group1 permission
+      group.group2: 60         # 1 minute for players with group.group2 permission
+      custom.repair.fast: 30   # 30 secods for players with the custom.repair.fast permission
+ 
+  home:
+    aliases: 
+    - ehome
+    - gohome
+    durations:
+      default: 60
+      group.group1: 120
+      group.group2: 60
+ 
+  tpa:
+    aliases: 
+    - tp
+    durations:
+      default: 120
+      group.group1: 60
+      group.group2: 30
+      group.moderator: 0
