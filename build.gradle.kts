@@ -19,7 +19,6 @@ repositories {
 }
 
 dependencies {
-    // Using Paper API instead of Folia API for better compatibility
     compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
     implementation(kotlin("stdlib"))
 }
@@ -34,8 +33,18 @@ tasks {
     }
     
     shadowJar {
-        archiveClassifier.set("")
-        relocate("kotlin", "me.zepsizola.zcommandcooldown.lib.kotlin")
+        archiveClassifier.set("shaded")
+        archiveVersion.set("")
+        minimize()
+    }
+
+    processResources {
+        val props = mapOf("version" to project.version)
+        inputs.properties(props)
+        filteringCharset = "UTF-8"
+        filesMatching("plugin.yml") {
+            expand(props)
+        }
     }
     
     build {
