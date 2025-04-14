@@ -16,12 +16,17 @@ A lightweight Minecraft plugin that adds customizable, permission-based cooldown
 - **Persistent Cooldowns**: Cooldowns persist across server restarts
 - **Folia Compatible**: Works with both Paper and Folia servers
 
+## Dependencies
+
+- [MCKotlin](https://modrinth.com/plugin/mckotlin)
+
 ## Installation
 
-1. Download the latest release from the [Releases](https://github.com/zepsizola/ZCommandCooldown/releases) page
-2. Place the JAR file in your server's `plugins` folder
-3. Restart your server
-4. Edit the configuration files in the `plugins/ZCommandCooldown` directory to customize the plugin
+1. Download the latest release from [Modrinth](https://modrinth.com/plugin/zcommandcooldown/versions)
+2. Download the appropriate version of MCKotlin from [Modrinth](https://modrinth.com/plugin/mckotlin)
+3. Place the JAR file in your server's `plugins` folder
+4. Restart your server
+5. Edit the configuration files in the `plugins/ZCommandCooldown/` directory to customize the plugin
 
 ## Building from Source
 
@@ -33,8 +38,19 @@ git clone https://github.com/zepsizola/ZCommandCooldown.git
 cd ZCommandCooldown
 
 # Build the plugin
-./gradlew jar
+./gradlew shadowJar
 ```
 
-## Configuration (`cooldowns.yml`)
-[View cooldowns.yml](./src/main/resources/cooldowns.yml)
+## Configuration ([`cooldowns.yml`](./src/main/resources/cooldowns.yml))
+```yaml
+cooldowns:
+  repair: # Command that a cooldown will be applied to.
+    aliases: # Other aliases for the command. All share the same cooldown.
+    - fix
+    - erepair
+    durations: # Set durations of cooldown according to permission. If player has multiple of these perms, the lowest duration is used.
+      default: 600             # 600 seconds for players by default
+      group.group1: 120        # 2 minutes for players with group.group1 permission
+      group.group2: 60         # 1 minute for players with group.group2 permission
+      custom.repair.fast: 30   # 30 secods for players with the custom.repair.fast permission
+```
