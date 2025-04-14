@@ -2,6 +2,7 @@ package me.zepsizola.zcommandcooldown
 
 import org.bukkit.plugin.java.JavaPlugin
 import java.util.logging.Level
+import org.bstats.bukkit.Metrics
 
 class ZCommandCooldown : JavaPlugin() {
     
@@ -14,27 +15,23 @@ class ZCommandCooldown : JavaPlugin() {
     private var debugMode = false
     
     override fun onEnable() {
-        try {
-            // Initialize config manager first
-            configManager = ConfigManager(this)
-            
-            // Load configurations before initializing other components
-            configManager.loadConfigs()
-            
-            // Now initialize cooldown manager after configs are loaded
-            cooldownManager = CooldownManager(this)
-            
-            // Register command handler
-            getCommand("zcommandcooldown")?.setExecutor(CommandHandler(this))
-            
-            // Register event listener
-            server.pluginManager.registerEvents(CommandListener(this), this)
-            
-            logger.info("ZCommandCooldown has been enabled!")
-        } catch (e: Exception) {
-            logger.severe("Error enabling ZCommandCooldown: ${e.message}")
-            e.printStackTrace()
-        }
+        // Initialize config manager first
+        configManager = ConfigManager(this)
+
+        // Load configurations before initializing other components
+        configManager.loadConfigs()
+
+        // Now initialize cooldown manager after configs are loaded
+        cooldownManager = CooldownManager(this)
+
+        // Register command handler
+        getCommand("zcommandcooldown")?.setExecutor(CommandHandler(this))
+
+        // Register event listener
+        server.pluginManager.registerEvents(CommandListener(this), this)
+
+        setupBStats()
+        logger.info("ZCommandCooldown has been enabled!")
     }
     
     override fun onDisable() {
@@ -91,5 +88,11 @@ class ZCommandCooldown : JavaPlugin() {
         if (debugMode) {
             logger.info("[DEBUG] $message")
         }
+    }
+    
+    private fun setupBStats() {
+        // Initialize bStats
+        val pluginId = 25461
+        val metrics = Metrics(this, pluginId)
     }
 }

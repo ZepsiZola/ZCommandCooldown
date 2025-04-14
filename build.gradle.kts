@@ -20,7 +20,8 @@ repositories {
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
-    implementation(kotlin("stdlib"))
+    compileOnly(kotlin("stdlib"))
+    implementation("org.bstats:bstats-bukkit:3.0.2")
 }
 
 tasks {
